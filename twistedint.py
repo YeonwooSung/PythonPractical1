@@ -2,7 +2,7 @@ class TwistedInt:
     def __init__(self, val, n):
         if n < 0:
             raise ValueError("The range of the value should be greater than 0.")
-        elif (n < val) or (0 > val):
+        elif (n <= val) or (0 > val):
             raise ValueError("The value should be in the range of 0 ~ n")
         else :
             self.val = val
