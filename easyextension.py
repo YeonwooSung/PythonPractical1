@@ -46,14 +46,14 @@ def checkReverseMultiply(n):
     return True
 
 #Function to check if the condition "(x+y)* z == x+(y*z)" is true
-def checkReverseAddAndMult(n):
+def checkReverseAddAndAdd(n):
     for x in range (0, n-1):
         for y in range (0, n-1):
             for z in range (0, n-1):
                 ti1 = TwistedInt(x, n)
                 ti2 = TwistedInt(y, n)
                 ti3 = TwistedInt(z, n)
-                if not (((ti1 + ti2)*ti3) == (ti1+(ti2*ti3))):
+                if not (((ti1 + ti2)+ti3) == (ti1+(ti2+ti3))):
                     return False
     return True
 
