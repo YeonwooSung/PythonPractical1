@@ -1,9 +1,9 @@
 from twistedint import *
 
-#Function for the first Easy extension.
-def findMul1(n):
+# Function for the first Easy extension.
+def findMull(n):
     results = []
-    for i in range (2, n): #We should skip the 1, because the TwistedInt(1,1) is an illegal expression!
+    for i in range (2, n):  # We should skip the 1, because the TwistedInt(1,1) is an illegal expression!
         for j in range (0, i):
             ti = TwistedInt(j, i)
             if (ti * ti) == TwistedInt(1, i):
