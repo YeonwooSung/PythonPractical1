@@ -1,3 +1,5 @@
+from Matrices import *
+
 class TwistedInt:
     def __init__(self, val, n):
         if n < 0:
@@ -24,7 +26,10 @@ class TwistedInt:
     # Define the operator *
     def __mul__(self, other):
         if not isinstance(self, other.__class__):
-            raise TypeError("The type of the second argument is not the TwistedInt!")
+            if other.__class__ == "<class 'Matrices.Matrix'>":
+                return other * self
+            else:
+                raise TypeError("The type of the second argument is not the TwistedInt!")
         elif self.n != other.n:
             raise ValueError("The value n of the two objects should be same!")
         else:
