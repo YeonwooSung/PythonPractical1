@@ -1,6 +1,6 @@
 from twistedint import *
 
-class TwistedInteger:
+class TwistedIntegers:
     def __init__(self, n):
         self.size = n #Add a field called size, which is the size of Zn, which is a set of TwistedInts.
         self.list = [] #The list which cotains all twisted int objects in it
