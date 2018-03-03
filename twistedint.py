@@ -21,7 +21,7 @@ class TwistedInt:
         ...
         ValueError: The value should be in the range of 0 ~ n-1
 
-        >>> TwistedInt(-2, -5)
+        >>> TwistedInt(2, -5)
         Traceback (most recent call last):
         ...
         ValueError: The range of the value should be greater than 0.
