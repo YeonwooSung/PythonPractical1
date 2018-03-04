@@ -8,7 +8,7 @@ This file contains functions which implements the easy extensions.
 #Function for the first Easy extension.
 def findMul1(n):
     """
-    This function finds for a given n all elements x ∈ Zn such that x * x = 1, where 1 ∈ Zn is calculated as TwistedInt(1,n).
+    This function finds for a given n all elements x in the Zn.
     :param n: is the n value of the twisted ints.
 
     >>> findMul1(0)
@@ -79,15 +79,12 @@ def checkReverseAdd(n):
     """
     This function checks if the condition "x+y == y+x" is true for all twisted ints in the given range.
 
-    >>> checkReverseAdd(0)
-    True
-
     >>> checkReverseAdd(2)
     True
 
     Errors:
     >>> checkReverseAdd(-1)
-    Trace (most recent call last):
+    Traceback (most recent call last):
     ...
     ValueError: The range of the value should be greater than 0.
     """
@@ -117,7 +114,7 @@ def checkReverseMultiply(n):
 
     Errors:
     >>> checkReverseMultiply(-1)
-    Trace (most recent call last):
+    Traceback (most recent call last):
     ...
     ValueError: The range of the value should be greater than 0.
     """
@@ -141,7 +138,7 @@ def checkReverseAddAndAdd(n):
 
     Errors:
     >>> checkReverseAddAndAdd(-1)
-    Trace (most recent call last):
+    Traceback (most recent call last):
     ...
     ValueError: The range of the value should be greater than 0.
     """
@@ -170,7 +167,7 @@ def checkReverseMultiplyAndMult(n):
 
     Errors:
     >>> checkReverseMultiplyAndMult(-1)
-    Trace (most recent call last):
+    Traceback (most recent call last):
     ...
     ValueError: The range of the value should be greater than 0.
     """
@@ -202,7 +199,7 @@ def checkReverseNested(n):
 
     Errors:
     >>> checkReverseNested(-1)
-    Trace (most recent call last):
+    Traceback (most recent call last):
     ...
     ValueError: The range of the value should be greater than 0.
     """
@@ -217,3 +214,7 @@ def checkReverseNested(n):
                 if not (((ti1+ti2)*ti3) == ((ti1*ti3) + (ti2*ti3))):
                     return False
     return True
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
