@@ -19,6 +19,9 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
     def __str__(self):
         return "<" + str(self.val) + ":" + str(self.n) + ">"
 
+    def __repr__(self):
+        return str(self)
+
     # Overwrite * to allow for use or creation of custom functions
     def __mul__(self, other):
         if not isinstance(self, other.__class__):  # checks that two of the same class are being multiplied
@@ -84,7 +87,7 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
     # Overwrite * to allow for use or creation of custom functions
     def __add__(self, other):
         if not isinstance(self, other.__class__):  # checks that two of the same class are being added
-            raise TypeError("The type of the second argument is not the TwistedInt!")
+            raise TypeError("The type of the second argument is not the NewTwist!")
         elif self.n != other.n:  # checks that the two values of n are the same
             raise ValueError("The value n of the two objects should be same!")
         else:
@@ -104,6 +107,21 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
                     self.addOperation = ""
                     self.addExists = False
                     self.createAdd(other)
+
+    # Overwrite the == operator.
+    def __eq__(self, other):
+        if not isinstance(self, other.__class__):
+            raise TypeError("The type of the second argument is not the NewTwist!")
+        elif self.n != other.n:
+            raise ValueError("The value n of the two objects should be same!")
+        else:
+            if self.n == other.n and self.val == other.val:
+                return True
+            return False
+
+    # Overwrite the != operator.
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     # when the user wants to create a new function
     def createAdd(self, other):
