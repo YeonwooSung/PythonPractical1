@@ -115,7 +115,7 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
         elif self.n != other.n:
             raise ValueError("The value n of the two objects should be same!")
         else:
-            if self.n == other.n and self.val == other.val:
+            if self.val == other.val:
                 return True
             return False
 
