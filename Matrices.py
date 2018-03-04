@@ -12,6 +12,7 @@ class Matrix:
         column = int(input())
         self.matrix = [[0 for x in range(column)] for y in range(row)]  # creates an empty matrix to be filled
         self.fillMatrix(self.matrix)  # calls method to fill matrix
+        print(self)
 
     # gets user to fill a matrix with number
     def fillMatrix(self, matrix):
@@ -25,7 +26,6 @@ class Matrix:
                     print("please ensure that your value is less than %i" % n)
                     uInput = int(input())
                 matrix[i][j] = TwistedInt(uInput, n)  # sets cell to TwistedInt
-
         return matrix
 
     # Define the operator +
@@ -39,7 +39,7 @@ class Matrix:
             for i in range(len(self)):  # for each cell in the matrix
                 for j in range(len(self[i])):
                     output[i][j] = self[i][j] + other[i][j]  # use TwistedInt addition to add
-            return output
+            print(output)
 
     # Defines the len() for the matrix
     def __len__(self):
@@ -79,11 +79,13 @@ class Matrix:
         :return: (string) the string representation
 
         """
-        return self.printFormat()
-
-    def printFormat(self):
-        print("[", end="")
+        output = "["
         for i in range(len(self.matrix) - 1):
-            print("{},".format(self.matrix[i]))
-        print(self.matrix[len(self.matrix) - 1], end="")
-        print("]")
+            output = output + str(self.matrix[i]) + ",\n"
+        output = output + str(self.matrix[len(self.matrix) - 1])
+        output = output + "]"
+
+        return output
+
+    def __repr__(self):
+        return str(self)
