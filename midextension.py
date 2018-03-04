@@ -66,6 +66,9 @@ def addModArithmetic(n):
     """
     This function checks if the addition follows modular modular arithmetic rule, which is "op1 + op2 == op1".
 
+    >>> addModArithmetic(4)
+    [<0:4>]
+
     Errors:
     >>> addModArithmetic(-1)
     Traceback (most recent call last):
@@ -79,6 +82,9 @@ def addModArithmetic(n):
 def multModArithmetic(n):
     """
     This function checks if the multiplication follows modular arithmetic rule, which is "op1 * op2 == op1".
+
+    >>> multModArithmetic(4)
+    [<0:4>]
 
     Errors:
     >>> multModArithmetic(-1)
