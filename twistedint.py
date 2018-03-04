@@ -1,5 +1,3 @@
-from Matrices import *
-
 """
 This is the module called twistedint, which is to extend the implementation of the "twisted integers".
 
@@ -16,20 +14,25 @@ class TwistedInt:
         <2:5>
 
         Errors:
-        >>> TwistedInt(1, 1)
-        Traceback (most recent call last):
-        ...
-        ValueError: The value should be in the range of 0 ~ n-1
-
         >>> TwistedInt(2, -5)
         Traceback (most recent call last):
         ...
         ValueError: The range of the value should be greater than 0.
+
+        >>> TwistedInt(3, 2)
+        Traceback (most recent call last):
+        ...
+        ValueError: The value of the TwistedInt should be in the range of 0 ~ n-1
+
+        >>> TwistedInt(-5, 4)
+        Traceback (most recent call last):
+        ...
+        ValueError: The value of the TwistedInt should be in the range of 0 ~ n-1
         """
         if n < 0:
             raise ValueError("The range of the value should be greater than 0.")
         elif (n <= val) or (0 > val):
-            raise ValueError("The value should be in the range of 0 ~ n-1")
+            raise ValueError("The value of the TwistedInt should be in the range of 0 ~ n-1")
         else :
             self.val = val
             self.n = n
@@ -40,8 +43,8 @@ class TwistedInt:
         This method converts the instance of the TwistedInt class to the corresponding string.
         :return: (string) the string representation
 
-        >>> str(TwistedInt(3, 7))
-        '<5:7>'
+        >>> str(TwistedInt(2, 5))
+        '<2:5>'
         """
         return "<" + str(self.val) + ":" + str(self.n) + ">"
 
@@ -51,11 +54,14 @@ class TwistedInt:
         Defines the operation of addition.
         :param other: this is the another twisted int object, which is the second operand of the addition.
 
-        >>> TwistedInt(2, 5) + TwistedInt(3, 5)
-        <0,5>
+        >>> TwistedInt(3, 5) + TwistedInt(3, 5)
+        <1:5>
+
+        >>> TwistedInt(3, 5) + TwistedInt(4, 5)
+        <2:5>
 
         Errors:
-        >>> TwistedInt(2,7) + TwistedInt(1, 8)
+        >>> TwistedInt(3, 5) + TwistedInt(3, 4)
         Traceback (most recent call last):
         ...
         ValueError: The value n of the two objects should be same!
@@ -75,31 +81,25 @@ class TwistedInt:
     # Define the operator *
     def __mul__(self, other):
         """
-        Defines the operation of multiplication operator (operator *)
-        :param other: the object the first is being multiplied by
-        :return: (TwistedInt) the result of multiplying the two TwistedInts
+        Defines the operation of multiplication.
+        :param other: is the second operator of the multiplication.
 
-
-        >>>TwistedInt(3, 5) * TwistedInt(2, 5)
-        <1:5>
+        >>> TwistedInt(3, 5) * TwistedInt(4, 5)
+        <4:5>
 
         Errors:
-        >>> TwistedInt(2,7) * TwistedInt(1, 8)
+        >>> TwistedInt(3, 5) * TwistedInt (4, 16)
         Traceback (most recent call last):
         ...
         ValueError: The value n of the two objects should be same!
 
-        >>> TwistedInt(2, 5) * 35
+        >>> TwistedInt(3, 5) * 4
         Traceback (most recent call last):
         ...
         TypeError: The type of the second argument is not the TwistedInt!
-
         """
         if not isinstance(self, other.__class__):
-            if other.__class__ == "<class 'Matrices.Matrix'>":
-                return other * self
-            else:
-                raise TypeError("The type of the second argument is not the TwistedInt!")
+            raise TypeError("The type of the second argument is not the TwistedInt!")
         elif self.n != other.n:
             raise ValueError("The value n of the two objects should be same!")
         else:
@@ -149,7 +149,11 @@ class TwistedInt:
         Similar with __str__ method.
         :return: (string) the string representation
 
-        >>> repr(TwistedInt(3, 7))
-        '<3:7>'
+        >>> repr(TwistedInt(2, 5))
+        '<2:5>'
         """
         return str(self)
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
