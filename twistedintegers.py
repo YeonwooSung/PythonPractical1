@@ -53,7 +53,7 @@ class TwistedIntegers:
         :return: (self.list) is the list of the TwistedInts.
 
         >>> TwistedIntegers(5).IntegerList()
-        [<0:5>, <1:5>, <2,5>, <3,5>, <4,5>]
+        [<0:5>, <1:5>, <2:5>, <3:5>, <4:5>]
         """
         return self.list
 
@@ -72,10 +72,10 @@ class TwistedIntegers:
         >>> TwistedIntegers(5).addTwoTwistedInt(5, 4)
         Traceback (most recent call last):
         ...
-        TypeError: The value of the TwistedInt should be in range of 0 ~ 4
+        TypeError: The value of the TwistedInt should be in the range of 0 ~ 4
         """
         if (not (0 < first < self.size)) or (not (0 < second < self.size)):#To check if the arguments are in the range
-            message = "The value of the TwistedInt should be in range of 0 ~ "
+            message = "The value of the TwistedInt should be in the range of 0 ~ "
             message += str((self.size - 1))
             raise TypeError(message)
         else:
@@ -89,18 +89,22 @@ class TwistedIntegers:
         :param first: is the index of the first operand.
         :param second: is the index of the second operand.
 
-        >>> TwistedIntegers(5).addTwoTwistedInt(3, 4)
+        >>> TwistedIntegers(5).mulTwoTwistedInt(3, 4)
         <4:5>
 
         Errors:
         >>> TwistedIntegers(5).addTwoTwistedInt(5, 4)
         Traceback (most recent call last):
         ...
-        TypeError: The value of the TwistedInt should be in range of 0 ~ 4
+        TypeError: The value of the TwistedInt should be in the range of 0 ~ 4
         """
         if (not (0 < first < self.size)) or (not (0 < second < self.size)):#To check if the arguments are in the range
-            message = "The value of the TwistedInt should be in range of 0 ~ "
+            message = "The value of the TwistedInt should be in the range of 0 ~ "
             message += str((self.size - 1))
             raise TypeError(message)
         else:
             return (self.list[first] * self.list[second])
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
