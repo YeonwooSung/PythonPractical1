@@ -74,6 +74,27 @@ class TwistedInt:
 
     # Define the operator *
     def __mul__(self, other):
+        """
+        Defines the operation of multiplication operator (operator *)
+        :param other: the object the first is being multiplied by
+        :return: (TwistedInt) the result of multiplying the two TwistedInts
+
+
+        >>>TwistedInt(3, 5) * TwistedInt(2, 5)
+        <1:5>
+
+        Errors:
+        >>> TwistedInt(2,7) * TwistedInt(1, 8)
+        Traceback (most recent call last):
+        ...
+        ValueError: The value n of the two objects should be same!
+
+        >>> TwistedInt(2, 5) * 35
+        Traceback (most recent call last):
+        ...
+        TypeError: The type of the second argument is not the TwistedInt!
+
+        """
         if not isinstance(self, other.__class__):
             if other.__class__ == "<class 'Matrices.Matrix'>":
                 return other * self
@@ -129,6 +150,6 @@ class TwistedInt:
         :return: (string) the string representation
 
         >>> repr(TwistedInt(3, 7))
-        '<5:7>'
+        '<3:7>'
         """
         return str(self)

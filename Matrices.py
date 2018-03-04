@@ -26,8 +26,6 @@ class Matrix:
                     uInput = int(input())
                 matrix[i][j] = TwistedInt(uInput, n)  # sets cell to TwistedInt
 
-        print(matrix)
-
         return matrix
 
     # Define the operator +
@@ -73,3 +71,19 @@ class Matrix:
                         part = part + self.matrix[i][columns] * other[columns][j]  # uses twistedInt multiplication
                     output[i][j] = part  # sets the cell to be the calculated twisted int
             return output
+
+    # Overwrite "print"
+    def __str__(self):
+        """
+        This method converts the instance of the TwistedInt class to the corresponding string.
+        :return: (string) the string representation
+
+        """
+        return self.printFormat()
+
+    def printFormat(self):
+        print("[", end="")
+        for i in range(len(self.matrix) - 1):
+            print("{},".format(self.matrix[i]))
+        print(self.matrix[len(self.matrix) - 1], end="")
+        print("]")
