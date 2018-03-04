@@ -66,32 +66,30 @@ def addModArithmetic(n):
     """
     This function checks if the addition follows modular modular arithmetic rule, which is "op1 + op2 == op1".
 
-    >>> addModArithmetic(4)
-    [<0:4>]
-
-    >>> addModArithmetic(0)
-    []
-
     Errors:
+    >>> addModArithmetic(-1)
     Traceback (most recent call last):
     ...
     ValueError: The range of the value should be greater than 0.
     """
+    if (n < 0):
+        raise ValueError("The range of the value should be greater than 0.")
     return modArithmetic(n, lambda m, i: m + i)
 
 def multModArithmetic(n):
     """
     This function checks if the multiplication follows modular arithmetic rule, which is "op1 * op2 == op1".
 
-    >>> multModArithmetic(5)
-    [<0:5>]
-
-    >>> multModArithmetic(0)
-    []
-
     Errors:
+    >>> multModArithmetic(-1)
     Traceback (most recent call last):
     ...
     ValueError: The range of the value should be greater than 0.
     """
+    if (n < 0):
+        raise ValueError("The range of the value should be greater than 0.")
     return modArithmetic(n, lambda m, i: m * i)
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
