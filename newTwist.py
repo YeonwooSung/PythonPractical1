@@ -92,7 +92,7 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
             raise ValueError("The value n of the two objects should be same!")
         else:
             if not self.addExists:  # if a previous add function doesn't already exist
-                self.createAdd(other)
+                return self.createAdd(other)
             else:  # if a previous add function does exist
                 print("You already have a function to add something")
                 print(self.addOperation)
@@ -102,11 +102,13 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
                     uInput = input("Please enter either y or n")
                 if uInput == "y":  # if they want to re-use the same function
                     self.remainingInput = ""
-                    print(NewTwist(self.addLetter(other), self.n))
+                    newTwistObj = NewTwist(self.addLetter(other), self.n)
+                    print(newTwistObj)
+                    return newTwistObj
                 else:  # create new function
                     self.addOperation = ""
                     self.addExists = False
-                    self.createAdd(other)
+                    return self.createAdd(other)
 
     # Overwrite the == operator.
     def __eq__(self, other):
@@ -128,8 +130,10 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
         self.remainingInput = ""
         print(
             "When creating custom add function, the following notation will be used: NewTwist(a,n) + NewTwist(b,n)")
-        print(NewTwist(self.addLetter(other), self.n))  # create, evaluates and prints function
+        newTwistObj = NewTwist(self.addLetter(other), self.n)
+        print(newTwistObj)  # create, evaluates and prints function
         self.addExists = True  # says a function exists for later use
+        return newTwistObj
 
     # adds an operator to the function
     def addOperator(self, other, value):
