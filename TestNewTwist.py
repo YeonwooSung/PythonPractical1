@@ -6,6 +6,7 @@ from unittest.mock import patch
 
 from newTwist import *
 
+
 class NewTwistTests(unittest.TestCase):
 
     def testInit(self):
@@ -38,7 +39,7 @@ class NewTwistTests(unittest.TestCase):
         self.assertTrue(a == c, "Should be equal")
         self.assertTrue(a == a, "Should be equal")
 
-    def testEqulasValidation(self):
+    def testEqualsValidation(self):
         with self.assertRaisesRegex(TypeError, "The type of the second argument is not the NewTwist!"):
             NewTwist(2, 5) == 2
         with self.assertRaisesRegex(ValueError, "The value n of the two objects should be same!"):
@@ -54,14 +55,14 @@ class NewTwistTests(unittest.TestCase):
         self.assertFalse(a != a, "Should be equal")
 
     def testAddNewTwist(self):
-        with mock.patch('builtins.input', side_effect=['a','+','b','%','n', 'q']):
+        with mock.patch('builtins.input', side_effect=['a', '+', 'b', '%', 'n', 'q']):
             a = NewTwist(2, 5)
             b = NewTwist(3, 5)
             c = a + b
             self.assertEqual(c, NewTwist(5, 5))
 
     def testMulNewTwist(self):
-        with mock.patch('builtins.input', side_effect=['a','*','b','%','n','q']):
+        with mock.patch('builtins.input', side_effect=['a', '*', 'b', '%', 'n', 'q']):
             a = NewTwist(2, 5)
             b = NewTwist(3, 5)
             c = a * b
