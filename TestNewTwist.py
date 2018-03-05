@@ -52,16 +52,26 @@ class NewTwistTests(unittest.TestCase):
         self.assertFalse(a != c, "Should be equal")
         self.assertFalse(a != a, "Should be equal")
 
-    @patch('TestNewTwist.inputCase', return_value = NewTwist(5, 5))
-    def testMakeCustomFunction(self, input):
+    @patch('TestNewTwist.inputCaseAdd', return_value = NewTwist(5, 5)) #The input should be a + b % n
+    def testMakeCustomFunctionForAdd(self, input):
         self.assertEqual(NewTwist(2, 5) + NewTwist(3, 5), NewTwist(5, 5))
+
+    @patch('TestNewTwist.inputCaseMul', return_value = NewTwist(6, 5)) #The input should be a * b % n
+    def testMakeCustomFunctionForMult(self, input):
+        self.assertEqual(NewTwist(2, 5) * NewTwist(3, 5), NewTwist(6, 5))
 
 
 if __name__ == '__main__':
     unittest.main()
 
-def inputCase():
+def inputCaseAdd():
     a = NewTwist(2, 5)
     b = NewTwist(3, 5)
     result = a + b
+    return result
+
+def inputCaseMul():
+    a = NewTwist(2, 5)
+    b = NewTwist(3, 5)
+    result = a * b
     return result

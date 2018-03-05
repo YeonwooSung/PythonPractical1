@@ -38,12 +38,14 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
                 self.addOperation = ""
                 self.addExists = False
 
-                self.createAdd(other)
+                newTwistObj = self.createAdd(other)
 
                 self.multOperation = True
                 self.multOperation = self.addOperation
                 self.addOperation = tempO
                 self.addExists = tempB
+
+                return newTwistObj
 
             else:  # when a function already exists
                 print("You already have a function to multiply something")
@@ -61,10 +63,14 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
                     self.addOperation = self.multOperation
                     self.addExists = self.multExists
 
-                    print(NewTwist(self.addLetter(other), self.n))
+                    newTwistObj = NewTwist(self.addLetter(other), self.n)
+
+                    print(newTwistObj)
 
                     self.addOperation = tempO
                     self.addExists = tempB
+
+                    return newTwistObj
 
                 else:  # The user wants to create a new function
                     self.multOperation = ""
@@ -76,13 +82,14 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
                     self.addOperation = ""
                     self.addExists = False
 
-                    self.createAdd(other)
+                    newTwistObj = self.createAdd(other)
 
                     self.multOperation = self.addOperation
                     self.multExists = True
 
                     self.addOperation = tempO
                     self.addExists = tempB
+                    return newTwistObj
 
     # Overwrite * to allow for use or creation of custom functions
     def __add__(self, other):
