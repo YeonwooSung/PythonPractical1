@@ -23,6 +23,15 @@ def findMul1(n):
     >>> findMul1(14)
     [<3:14>, <9:14>]
 
+    >>> findMul1(23)
+    [<4:23>, <17:23>]
+
+    >>> findMul1(46)
+    [<17:46>, <27:46>]
+
+    >>> findMul1(54)
+    []
+
     Errors:
     >>> findMul1(1)
     Traceback (most recent call last):
@@ -81,7 +90,22 @@ def checkReverseAdd(n):
     """
     This function checks if the condition "x+y == y+x" is true for all twisted ints in the given range.
 
+    >>> checkReverseAdd(1)
+    True
+
     >>> checkReverseAdd(2)
+    True
+
+    >>> checkReverseAdd(13)
+    True
+
+    >>> checkReverseAdd(23)
+    True
+
+    >>> checkReverseAdd(50)
+    True
+
+    >>> checkReverseAdd(100)
     True
 
     Errors:
@@ -111,6 +135,12 @@ def checkReverseMultiply(n):
     >>> checkReverseMultiply(6)
     True
 
+    >>> checkReverseMultiply(13)
+    True
+
+    >>> checkReverseMultiply(35)
+    True
+
     >>> checkReverseMultiply(350)
     True
 
@@ -135,7 +165,19 @@ def checkReverseAddAndAdd(n):
     """
     This function checks if the condition "(x+y)+ z == x+(y+z)" is true for all twisted ints in the given range.
 
+    >>> checkReverseAddAndAdd(0)
+    True
+
+    >>> checkReverseAddAndAdd(1)
+    True
+
     >>> checkReverseAddAndAdd(35)
+    True
+
+    >>> checkReverseAddAndAdd(60)
+    True
+
+    >>> checkReverseAddAndAdd(85)
     True
 
     Errors:
@@ -165,6 +207,15 @@ def checkReverseMultiplyAndMult(n):
     True
 
     >>> checkReverseMultiplyAndMult(23)
+    True
+
+    >>> checkReverseMultiplyAndMult(45)
+    True
+
+    >>> checkReverseMultiplyAndMult(80)
+    True
+
+    >>> checkReverseMultiplyAndMult(100)
     True
 
     Errors:
@@ -197,6 +248,18 @@ def checkReverseNested(n):
     False
 
     >>> checkReverseNested(34)
+    False
+
+    >>> checkReverseNested(50)
+    False
+
+    >>> checkReverseNested(64)
+    False
+
+    >>> checkReverseNested(81)
+    False
+
+    >>> checkReverseNested(100)
     False
 
     Errors:

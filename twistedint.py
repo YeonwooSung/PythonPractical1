@@ -120,6 +120,17 @@ class TwistedInt:
 
         >>> TwistedInt(2, 3) == 4
         False
+
+        Errors:
+        >>> TwistedInt(-5, 4) == TwistedInt(-5, 4)
+        Traceback (most recent call last):
+        ...
+        ValueError: The value of the TwistedInt should be in the range of 0 ~ n-1
+
+        >>> TwistedInt(4, 0) == TwistedInt(4, 0)
+        Traceback (most recent call last):
+        ...
+        ValueError: The range of the value should be greater than 0.
         """
         if isinstance(self, other.__class__):
             return self.val == other.val and self.n == other.n
@@ -151,6 +162,12 @@ class TwistedInt:
 
         >>> repr(TwistedInt(2, 5))
         '<2:5>'
+
+        Errors:
+        >>> repr(TwistedInt(-5, 4))
+        Traceback (most recent call last):
+        ...
+        ValueError: The value of the TwistedInt should be in the range of 0 ~ n-1
         """
         return str(self)
 
