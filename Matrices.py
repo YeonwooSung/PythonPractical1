@@ -3,16 +3,17 @@ from twistedint import *
 
 # creates and peforms operations on matrices
 class Matrix:
-
     # asks user to specify size and fill matrix on creation
-    def __init__(self):
-        print("please enter the number of rows:")
-        row = int(input())
-        print("please enter the number of columns:")
-        column = int(input())
-        self.matrix = [[0 for x in range(column)] for y in range(row)]  # creates an empty matrix to be filled
-        self.fillMatrix(self.matrix)  # calls method to fill matrix
-        print(self)
+    def __init__(self, premade=None):
+        if premade is not None:
+            self.matrix = premade
+        else:
+            print("please enter the number of rows:")
+            row = int(input())
+            print("please enter the number of columns:")
+            column = int(input())
+            self.matrix = [[0 for x in range(column)] for y in range(row)]  # creates an empty matrix to be filled
+            self.fillMatrix(self.matrix)  # calls method to fill matrix
 
     # gets user to fill a matrix with number
     def fillMatrix(self, matrix):
@@ -39,7 +40,7 @@ class Matrix:
             for i in range(len(self)):  # for each cell in the matrix
                 for j in range(len(self[i])):
                     output[i][j] = self[i][j] + other[i][j]  # use TwistedInt addition to add
-            self.outputMatrix(output)
+            return Matrix(output)
 
     # Defines the len() for the matrix
     def __len__(self):
@@ -57,7 +58,7 @@ class Matrix:
                 for i in range(len(output)):
                     for j in range(len(output[i])):
                         output[i][j] = self[i][j] * other  # multiplies all cells in the matrix by twisted int
-                self.outputMatrix(output)
+                return Matrix(output)
             else:  # else invalid type
                 raise TypeError("Please multiply a matrix by another matrix or a twisted int")
         elif len(self) != len(other[0]) and len(self[0]) != len(other):  # if the sizes don't work for multiplication
@@ -70,24 +71,11 @@ class Matrix:
                     for columns in range(len(self.matrix[0])):  # calculates the correct output for the cell
                         part = part + self.matrix[i][columns] * other[columns][j]  # uses twistedInt multiplication
                     output[i][j] = part  # sets the cell to be the calculated twisted int
-            self.outputMatrix(output)
-
-    # method so that the output of performing operations on the matrices works
-    def outputMatrix(self, output):
-        outputFinal = "["
-        for i in range(len(output) - 1):
-            outputFinal = outputFinal + str(output[i]) + ",\n "
-        outputFinal = outputFinal + str(output[len(output) - 1])
-        outputFinal = outputFinal + "]"
-        print(outputFinal)
+            return Matrix(output)
 
     # Overwrite "print"
     def __str__(self):
-        """
-        This method converts the instance of the TwistedInt class to the corresponding string.
-        :return: (string) the string representation
 
-        """
         output = "["
         for i in range(len(self.matrix) - 1):
             output = output + str(self.matrix[i]) + ",\n "
