@@ -65,18 +65,3 @@ def inputCase():
     b = NewTwist(3, 5)
     result = a + b
     return result
-
-# def getInputOperand():
-#     operand = get_input('Please enter either a, b, n, (')
-#     if operand == 'q':
-#         return ''
-#     else:
-#         return operand + getInputOperator()
-#
-# def getInputOperator():
-#     operator = get_input('Please enter one of the following operators +, -, *, /, ^, %, ). Enter q to evaluate')
-#     if operator == 'q':
-#         return ''
-#     else:
-#         return operator + getInputOperand()
-#to here
