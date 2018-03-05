@@ -17,21 +17,23 @@ def findMul1(n):
     >>> findMul1(-1)
     []
 
+    >>> findMul1(7)
+    [<2:7>, <3:7>]
+
+    >>> findMul1(14)
+    [<3:14>, <9:14>]
+
+    Errors:
     >>> findMul1(1)
-    []
-
-    >>> findMul1(5)
-    [<1:2>]
-
-    >>> findMul1(13)
-    [<1:2>, <2:7>, <3:7>]
+    Traceback (most recent call last):
+    ...
+    ValueError: The value of the TwistedInt should be in the range of 0 ~ n-1
     """
     results = []
-    for i in range (2, n): #We should skip the 1, because the TwistedInt(1,1) is an illegal expression!
-        for j in range (0, i):
-            ti = TwistedInt(j, i)
-            if (ti * ti) == TwistedInt(1, i):
-                results.append(ti)
+    for i in range (0, n): #We should skip the 1, because the TwistedInt(1,1) is an illegal expression!
+        ti = TwistedInt(i, n)
+        if (ti * ti) == TwistedInt(1, n):
+            results.append(ti)
     return results
 
 #Function for the second Easy extension.
@@ -90,8 +92,8 @@ def checkReverseAdd(n):
     """
     if (n < 0):
         raise ValueError("The range of the value should be greater than 0.")
-    for x in range (0, n):
-        for y in range (0, n):
+    for x in range (0, n-1):
+        for y in range (0, n-1):
             ti1 = TwistedInt(x, n)
             ti2 = TwistedInt(y, n)
             if not ((ti1 + ti2) == (ti2 + ti1)):
@@ -120,8 +122,8 @@ def checkReverseMultiply(n):
     """
     if (n < 0):
         raise ValueError("The range of the value should be greater than 0.")
-    for x in range (0, n):
-        for y in range (0, n):
+    for x in range (0, n-1):
+        for y in range (0, n-1):
             ti1 = TwistedInt(x, n)
             ti2 = TwistedInt(y, n)
             if not ((ti1 * ti2) == (ti2 * ti1)):
@@ -144,9 +146,9 @@ def checkReverseAddAndAdd(n):
     """
     if (n < 0):
         raise ValueError("The range of the value should be greater than 0.")
-    for x in range (0, n):
-        for y in range (0, n):
-            for z in range (0, n):
+    for x in range (0, n-1):
+        for y in range (0, n-1):
+            for z in range (0, n-1):
                 ti1 = TwistedInt(x, n)
                 ti2 = TwistedInt(y, n)
                 ti3 = TwistedInt(z, n)
@@ -173,9 +175,9 @@ def checkReverseMultiplyAndMult(n):
     """
     if (n < 0):
         raise ValueError("The range of the value should be greater than 0.")
-    for x in range (0, n):
-        for y in range (0, n):
-            for z in range (0, n):
+    for x in range (0, n-1):
+        for y in range (0, n-1):
+            for z in range (0, n-1):
                 ti1 = TwistedInt(x, n)
                 ti2 = TwistedInt(y, n)
                 ti3 = TwistedInt(z, n)
@@ -205,9 +207,9 @@ def checkReverseNested(n):
     """
     if (n < 0):
         raise ValueError("The range of the value should be greater than 0.")
-    for x in range (0, n):
-        for y in range (0, n):
-            for z in range (0, n):
+    for x in range (0, n-1):
+        for y in range (0, n-1):
+            for z in range (0, n-1):
                 ti1 = TwistedInt(x, n)
                 ti2 = TwistedInt(y, n)
                 ti3 = TwistedInt(z, n)
