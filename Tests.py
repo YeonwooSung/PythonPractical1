@@ -16,9 +16,9 @@ class TwistedIntTests(unittest.TestCase):
     def testInitValidation(self):
         with self.assertRaisesRegex(ValueError, "The range of the value should be greater than 0."):
             TwistedInt(2, -5)
-        with self.assertRaisesRegex(ValueError, "The value should be in the range of 0 ~ n-1"):
+        with self.assertRaisesRegex(ValueError, "The value of the TwistedInt should be in the range of 0 ~ n-1"):
             TwistedInt(3, 2)
-        with self.assertRaisesRegex(ValueError, "The value should be in the range of 0 ~ n-1"):
+        with self.assertRaisesRegex(ValueError, "The value of the TwistedInt should be in the range of 0 ~ n-1"):
             TwistedInt(-5, 4)
 
     def testPrintOverwrite(self):
