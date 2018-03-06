@@ -140,9 +140,6 @@ class TwistedIntegers:
         >>> TwistedIntegers(90).addTwoTwistedInt(5, 6)
         <11:90>
 
-        >>> TwistedIntegers(50).addTwoTwistedInt(5, 66)
-        <71:50>
-
         Errors:
         >>> TwistedIntegers(5).addTwoTwistedInt(5, 4)
         Traceback (most recent call last):
