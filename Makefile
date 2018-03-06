@@ -8,7 +8,7 @@ unittestNewTwist:
 	python3 TestNewTwist.py
 
 unittestMatrix:
-	python3 MatrixTest.py
+	python3 TestMatrices.py
 
 clean:
 	rm -r -f *.pyc __pycache__
