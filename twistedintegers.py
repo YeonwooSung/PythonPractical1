@@ -132,16 +132,16 @@ class TwistedIntegers:
         <11:30>
 
         >>> TwistedIntegers(50).addTwoTwistedInt(5, 6)
-        <11:30>
+        <11:50>
 
         >>> TwistedIntegers(70).addTwoTwistedInt(5, 6)
-        <11:30>
+        <11:70>
 
         >>> TwistedIntegers(90).addTwoTwistedInt(5, 6)
-        <11:30>
+        <11:90>
 
         >>> TwistedIntegers(50).addTwoTwistedInt(5, 66)
-        <71:30>
+        <71:50>
 
         Errors:
         >>> TwistedIntegers(5).addTwoTwistedInt(5, 4)
