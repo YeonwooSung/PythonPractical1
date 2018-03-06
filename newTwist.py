@@ -24,6 +24,21 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
 
     # Overwrite * to allow for use or creation of custom functions
     def __mul__(self, other):
+        """
+        This method allows the * operator for the NewTwist object.
+        The aim of this doc test is to test the possible errors.
+
+        Errors:
+        >>> NewTwist(2, 5) * 5
+        Traceback (most recent call last):
+        ...
+        TypeError: The type of the second argument is not the NewTwist!
+
+        >>> NewTwist(2, 5) * TwistedInt(2, 5)
+        Traceback (most recent call last):
+        ...
+        NameError: name 'TwistedInt' is not defined
+        """
         if not isinstance(self, other.__class__):  # checks that two of the same class are being multiplied
             raise TypeError("The type of the second argument is not the TwistedInt!")
         elif self.n != other.n:  # checks that both have the same value of n
@@ -91,8 +106,23 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
                     self.addExists = tempB
                     return newTwistObj
 
-    # Overwrite * to allow for use or creation of custom functions
+    # Overwrite + to allow for use or creation of custom functions
     def __add__(self, other):
+        """
+        This method allows the + operator for the NewTwist object.
+        The aim of this doc test is to test the possible errors.
+
+        Errors:
+        >>> NewTwist(2, 5) + 5
+        Traceback (most recent call last):
+        ...
+        TypeError: The type of the second argument is not the NewTwist!
+
+        >>> NewTwist(2, 5) + TwistedInt(2, 5)
+        Traceback (most recent call last):
+        ...
+        NameError: name 'TwistedInt' is not defined
+        """
         if not isinstance(self, other.__class__):  # checks that two of the same class are being added
             raise TypeError("The type of the second argument is not the NewTwist!")
         elif self.n != other.n:  # checks that the two values of n are the same
@@ -119,6 +149,21 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
 
     # Overwrite the == operator.
     def __eq__(self, other):
+        """
+        This method allows the NewTwist object using the == operator.
+        The aim of this doc test is to test all possible errors.
+
+        Errors:
+        >>> NewTwist(2, 5) == 5
+        Traceback (most recent call last):
+        ...
+        TypeError: The type of the second argument is not the NewTwist!
+
+        >>> NewTwist(2, 5) == TwistedInt(2, 5)
+        Traceback (most recent call last):
+        ...
+        NameError: name 'TwistedInt' is not defined
+        """
         if not isinstance(self, other.__class__):
             raise TypeError("The type of the second argument is not the NewTwist!")
         elif self.n != other.n:
@@ -242,3 +287,7 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
             else:
                 print(uInput)
                 raise ValueError("Invalid operation -- somehow")  # should never be able to get here
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
