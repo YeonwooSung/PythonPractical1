@@ -29,11 +29,6 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
         The aim of this doc test is to test the possible errors.
 
         Errors:
-        >>> NewTwist(2, 5) * 5
-        Traceback (most recent call last):
-        ...
-        TypeError: The type of the second argument is not the NewTwist!
-
         >>> NewTwist(2, 5) * TwistedInt(2, 5)
         Traceback (most recent call last):
         ...
