@@ -66,9 +66,9 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
                 print("You already have a function to multiply something")
                 print(self.multOperation)
                 # asks if the user would like to use previously made function
-                uInput = input("Would you like to use this function y = yes, n = create new function")
+                uInput = input("Would you like to use this function y = yes, n = create new function: ")
                 while uInput != "y" and uInput != "n":  # ensure input is either y or n
-                    uInput = input("Please enter either y or n")
+                    uInput = input("Please enter either y or n: ")
                 if uInput == "y":  # if they do want to use the previously made function
                     self.remainingInput = ""
 
@@ -79,8 +79,6 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
                     self.addExists = self.multExists
 
                     newTwistObj = NewTwist(self.addLetter(other), self.n)
-
-                    print(newTwistObj)
 
                     self.addOperation = tempO
                     self.addExists = tempB
@@ -134,13 +132,12 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
                 print("You already have a function to add something")
                 print(self.addOperation)
                 # asks the user if they want to create a new one or not
-                uInput = input("Would you like to use this function y = yes, n = create new function")
+                uInput = input("Would you like to use this function y = yes, n = create new function: ")
                 while uInput != "y" and uInput != "n":  # ensure the user enters a valid input
-                    uInput = input("Please enter either y or n")
+                    uInput = input("Please enter either y or n: ")
                 if uInput == "y":  # if they want to re-use the same function
                     self.remainingInput = ""
                     newTwistObj = NewTwist(self.addLetter(other), self.n)
-                    print(newTwistObj)
                     return newTwistObj
                 else:  # create new function
                     self.addOperation = ""
@@ -183,7 +180,6 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
         print(
             "When creating custom add function, the following notation will be used: NewTwist(a,n) + NewTwist(b,n)")
         newTwistObj = NewTwist(self.addLetter(other), self.n)
-        print(newTwistObj)  # create, evaluates and prints function
         self.addExists = True  # says a function exists for later use
         return newTwistObj
 
@@ -192,7 +188,7 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
         # if user is creating a new function
         if not self.addExists:
             print("Current operation is %s" % self.addOperation)  # prints what operation so far is
-            uInput = input("Please enter one of the following operators +, -, *, /, ^, %, ). Enter q to evalualte")
+            uInput = input("Please enter one of the following operators '+', '-', '*', '/', '^', '%', ')' Enter 'q' to evalualte: ")
             if uInput == "+":  # if the input is (in this case) "+"
                 self.addOperation = self.addOperation + "+ "  # adds a "+" to the operation so far
                 # performs operation of previously evaluated value and continues to ask user for input
@@ -213,6 +209,8 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
             elif uInput == "%":
                 self.addOperation = self.addOperation + "% "
                 return value % self.addLetter(other)
+            elif uInput == "q" and not self.openBrackets == 0:
+                print("please close all brackets before evaluating")
             elif uInput == "q" and self.openBrackets == 0:  # if the user wants to stop adding things to the function
                                                             # also checks that there are no open brackets
                 return value  # returns value as it is with no recursive calls
@@ -251,7 +249,7 @@ class NewTwist:  # Class allows custom operations to be created and reused on th
     def addLetter(self, other):
         if not self.addExists:  # if the user is creating a new function
             print("Current operation is %s" % self.addOperation)
-            uInput = input("Please enter either a, b, n, (")  # prints out list of valid inputs for the user
+            uInput = input("Please enter either 'a', 'b', 'n' or '(' : ")  # prints out list of valid inputs for the user
             if uInput == "a":  # works same as above except with letters (defined in createAdd function)
                 self.addOperation = self.addOperation + "a "
                 return self.addOperator(other, self.val)
