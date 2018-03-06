@@ -71,7 +71,7 @@ class TwistedIntTests(unittest.TestCase):
             a * b
 
     # Tests the equality overridden method
-    def testEqualsOverwride(self):
+    def testEqualsOverride(self):
         a = TwistedInt(3, 5)
         b = TwistedInt(4, 5)
         c = TwistedInt(3, 5)
